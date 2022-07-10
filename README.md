@@ -1,8 +1,6 @@
-
 # Learn and build with typescript
 
-Ce projet me permet d'apprendre les fondamentaux de typescript 
-
+Ce projet me permet d'apprendre les fondamentaux de typescript
 
 ## Tech Stack
 
@@ -10,34 +8,38 @@ Ce projet me permet d'apprendre les fondamentaux de typescript
 
 **Server:** Node, Typescript
 
-
 ## Installation
 
-Install my-project with npm or yarn
-
 Clone project on local
+
 ```bash
   git clone https://github.com/ngimdock/hello-typescript.git
 ```
+
 Navigate to the root directory
+
 ```bash
   cd hello-typescript
 ```
+
 Install dependencies
+
 ```bash
   npm Install
 
-  or 
+  or
 
   yarn install
 ```
 
 Live demo frontend
+
 ```bash
   Open index.html on your browser
 ```
 
 Live demo backend
+
 ```bash
   node app.ts
 ```
