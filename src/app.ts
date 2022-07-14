@@ -4,8 +4,11 @@ console.log("Implementation des allias et Génerics");
 type User = { name: string; age: number };
 type DateScring = string;
 type Id = number | string;
-type UserName = User["name"];
-type OtherUser = keyof User;
+type userName = User["name"];
+type userType = keyof User;
+type tab1 = (string | number)[];
+type tab2 = Array<string | number>;
+type identity<ArgType> = (arg: ArgType) => ArgType;
 
 //utilisation des allias de types
 const person: User = { name: "ngimdock", age: 22 };
@@ -22,5 +25,15 @@ function firtTableValue<TabType>(tab: TabType[]): TabType {
 }
 
 const value = firtTableValue(["hello", "world", "i am dan"]);
+
+// cette fonction étant prends un argument qui étends la proprité length d'un autre type
+function consoleSize<ArgType extends { length: number }>(
+  arg: ArgType
+): ArgType {
+  console.log(arg.length);
+  return arg;
+}
+
+const abb = consoleSize(["19"]);
 
 const compteur = document.querySelector<HTMLButtonElement>("#increment");
