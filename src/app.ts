@@ -1,49 +1,29 @@
-// Lancer npx tsc --watch
-
-// définition des types d'attriburs
-class A {
-  private a = 511;
-  protected b = "hello";
-
-  constructor(public c: number) {}
-
-  getA = () => this.a;
+interface Point {
+  x: number;
+  y: number;
+  getValue: () => {};
 }
 
-//classes abstraites
-abstract class Geometrie {
-  protected x = 10;
-  protected y = 10;
-
-  public static origin: { x: number; y: number } = { x: 0, y: 0 };
-
-  abstract surface(): number;
+// étendre l'interface Point et y ajouter des fonctionnalités
+interface Point {
+  z: number;
 }
 
-// classe concrête qui hérite de Géometrie et implemente toutes ses méthodes abstraites
-class Triangle extends Geometrie {
-  surface(): number {
-    return this.x * this.y;
+class Geometrie implements Point {
+  x = 0;
+  y = 0;
+  z = 0;
+
+  getValue(): number {
+    return this.x + this.y;
   }
 }
 
-console.log(Geometrie.origin);
+const instance = new Geometrie();
+console.log(instance.getValue());
 
-// Définition des générics sur les classes
-class Collection<T> {
-  constructor(private collec: T[]) {}
+// Différences entre un TYPE et une INTERFACE
 
-  first(): T | null {
-    return this.collec[0];
-  }
-
-  on(this: HTMLInputElement, name: string) {
-    //modification du this
-    this.addEventListener("change", () => console.log("modification"));
-  }
-}
-
-const instanceA = new A(3);
-const col = new Collection([1, 2, 3]);
-const firstNum = col.first();
-console.log(firstNum);
+// - Avec TYPE, on peu avoir les déclarations de type primitf ce qui n'est pas le cas avec les INTERFACE
+// - Il est impossible d'étendre les variables déclaré avec TYPE ce qui est possible avec interface
+// - Les INTERFACES peuvent être implementés par les classes
