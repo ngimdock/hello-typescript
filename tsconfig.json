@@ -4,7 +4,8 @@
     "target": "ESNext",
     "noEmitOnError": false,
     "strict": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "declaration": true
   },
   "files": ["./src/app.ts"]
 }
