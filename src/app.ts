@@ -1,29 +1,29 @@
-interface Point {
-  x: number;
-  y: number;
-  getValue: () => {};
-}
-
-// étendre l'interface Point et y ajouter des fonctionnalités
-interface Point {
-  z: number;
-}
-
-class Geometrie implements Point {
-  x = 0;
-  y = 0;
-  z = 0;
-
-  getValue(): number {
-    return this.x + this.y;
+// Le type unknown est presque même que le type any, la différence est
+// que le unknown on vas faire la vérification de type avant de faire les actions or avec le any pas besion de
+// faire des vérifications
+function verifType(arg: unknown): void {
+  if (arg instanceof HTMLInputElement) {
+    arg.value = "helo world !";
   }
 }
 
-const instance = new Geometrie();
-console.log(instance.getValue());
+// Les tuples
+const a = { isPavate: true, localhost: 3000 } as const;
+const b = [1, 2, 11] as const;
 
-// Différences entre un TYPE et une INTERFACE
+const tuple: [string, number] = ["hello", 20]; //tuple non mutable et modifiable
+const tab: (string | number)[] = [12, 21, 77, "world !"]; // tableau dynamique mutable et modifiabe
 
-// - Avec TYPE, on peu avoir les déclarations de type primitf ce qui n'est pas le cas avec les INTERFACE
-// - Il est impossible d'étendre les variables déclaré avec TYPE ce qui est possible avec interface
-// - Les INTERFACES peuvent être implementés par les classes
+type ListItem = [string, number];
+
+const c: ListItem = ["yo!", 1];
+const d: ListItem = ["eh oh!", 2];
+
+function merge<T extends unknown[], U extends unknown[]>(
+  a: T,
+  b: U
+): [...T, ...U] {
+  return [...a, ...b];
+}
+
+const e = merge(c, [1, 2, 3]);
